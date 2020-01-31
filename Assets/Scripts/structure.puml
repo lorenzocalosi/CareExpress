@@ -1,0 +1,59 @@
+@startuml GGJ2020 Structure
+
+hide empty members
+
+'Declarations
+
+class Event <<(S, Violet)>>
+class EventScreen <<(M, Yellow)>>
+class Actor <<(S, Violet)>>
+class Solution <<(S, Violet)>>
+class SolutionCollection <<(S, Violet) Singleton>>
+class EventHandler <<(M, Yellow) Singleton>>
+class TimerHandler <<(M, Yellow) Singleton>>
+
+class ActorGroup <<(S, Aquamarine) Struct>>
+
+'Definitions
+
+Event : + List<ActorGroup> actors
+Event : + GameObject basic
+Event : + GameObject success
+Event : + GameObject failure
+Event : + Solution solution
+
+EventScreen : + List<SpriteRenderer> spriteList
+EventScreen : + void BuildScreen(List<Actor> actors)
+
+Actor : + Dictionary<string, Sprite> sceneSprite
+
+Solution : + Sprite sprite
+
+EventHandler : + SpriteRenderer display
+EventHandler : + List<Button> buttons
+EventHandler : + void ShowEvent(Event newEvent)
+EventHandler : - void Success()
+EventHandler : - void Failure()
+
+TimerHandler : + float time
+TimerHandler : + Animator timer
+TimerHandler : - float count
+TimerHandler : - Coroutine coroutine
+TimerHandler : + void Wait(Action onFinish)
+TimerHandler : + void Stop()
+TimerHandler : - IEnumerator WaitTime(Action onFinish)
+
+SolutionCollection : + List<Solution> allSolutions
+SolutionCollection : + List<Solution> GetRandomSolutions(Solution avoid)
+
+ActorGroup : + List<Actor> possibleActors
+
+'Connections
+
+Event *-- ActorGroup
+ActorGroup *-- Actor
+Event *-- EventScreen : in the GameObjects
+Event *-- Solution 
+EventHandler o-- Event
+
+@enduml
