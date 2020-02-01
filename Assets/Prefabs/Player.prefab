@@ -95,7 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a81373f53f356e41ba144a2b3f9d3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   speed: 4
+  canMove: 1
 --- !u!50 &86353038091813552
 Rigidbody2D:
   serializedVersion: 4
@@ -110,7 +120,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
