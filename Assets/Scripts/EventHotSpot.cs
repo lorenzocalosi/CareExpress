@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class EventHotSpot : MonoBehaviour
 {
 	#region Fields
@@ -38,8 +39,8 @@ public class EventHotSpot : MonoBehaviour
 
 	private void CallShowEvent()
 	{
-		//Debug.Log($"Event Recived");
-		Event.EventHandler.Instance.ShowEvent(theEvent);
+		Debug.Log($"Event Recived");
+		//Event.EventHandler.Instance.ShowEvent(theEvent);
 	}
 
 	#endregion
