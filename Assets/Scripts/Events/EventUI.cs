@@ -42,6 +42,7 @@ namespace Event {
 		private void Update() {
 			if (Input.GetKeyDown(KeyCode.Escape) && gameObject.activeSelf) {
 				Back();
+				SoundManager.Instance.InterruptSoundTrackAndPlayOther("Talking", "Walking");
 			}
 		}
 

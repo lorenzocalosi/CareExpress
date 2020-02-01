@@ -55,6 +55,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		{
 			canMove = false;
 			rb.velocity = Vector2.zero;
+			SoundManager.Instance.InterruptSoundTrackAndPlayOther("Walking","Talking");
 			otherHotspot.CallShowEvent();
 		}
 	}
