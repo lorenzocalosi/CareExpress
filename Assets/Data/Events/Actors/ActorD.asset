@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c83dcccfce772e445a95cb7fd1f1a763, type: 3}
-  m_Name: ActorB
+  m_Name: ActorD
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,8 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animator: {fileID: 22100000, guid: 1b386f63977552f4087d81ecc1e71e85, type: 2}
-  spriteColor: {r: 1, g: 1, b: 1, a: 1}
-  relatedActor: {fileID: 0}
-  relatedSolution: {fileID: 0}
+  animator: {fileID: 9100000, guid: 6c93b9b57571d8d4884993d408685d36, type: 2}
+  relatedActor: {fileID: 11400000, guid: 2d6e5fd684a3a3f4495aadd47f8b979c, type: 2}
+  relatedSolution: {fileID: 11400000, guid: f19f534b191c56f4b8bbe16cdf98e44f, type: 2}
   icon: {fileID: 0}

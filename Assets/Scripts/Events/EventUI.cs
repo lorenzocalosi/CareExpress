@@ -23,6 +23,7 @@ namespace Event {
 
 		public Animator animator;
 		public Animator characterAnimator;
+		public Image characterImage;
 
 		public Transform itemsParent;
 		public Transform actorParent;
@@ -86,13 +87,18 @@ namespace Event {
 		}
 
 		public void ShowEventUI(Event newEvent) {
+			characterImage.color = newEvent.actor.spriteColor;
 			characterAnimator.runtimeAnimatorController = newEvent.actor.animator;
 			if (EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Pending) {
+				characterAnimator.GetComponent<Image>().enabled = true;
 				ShowMainPage();
 			}
 			else {
 				if (EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Failure) {
-					characterAnimator.SetTrigger("Gone");
+					characterAnimator.GetComponent<Image>().enabled = false;
+				}
+				else {
+					characterAnimator.GetComponent<Image>().enabled = true;
 				}
 				if (EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Success) {
 					characterAnimator.SetBool("Happy", true);

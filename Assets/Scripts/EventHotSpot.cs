@@ -20,24 +20,9 @@ public class EventHotSpot : MonoBehaviour
 
 	#endregion
 
-	#region Unity Callbacks
-
-	private void OnEnable()
-	{
-		playerMovement = FindObjectOfType<PlayerMovement>();
-		playerMovement.OnEnteredTriggerEvent += CallShowEvent;
-	}
-
-	private void OnDisable()
-	{
-		playerMovement.OnEnteredTriggerEvent -= CallShowEvent;
-	}
-
-	#endregion
-
 	#region Methods
 
-	private void CallShowEvent()
+	public void CallShowEvent()
 	{
 		Debug.Log($"Event Recived");
 		if (theEvent != null) {

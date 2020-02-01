@@ -37,6 +37,7 @@ namespace Event {
 		public void Evaluate() {
 			if (currentActor.relatedActor == selectedActor && currentActor.relatedSolution == selectedItem) {
 				EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Success, EventManager.Instance.progress[currentActor].tries);
+				EventManager.Instance.progress[currentActor.relatedActor] = new EventManager.ActorStateTries(EventManager.ActorState.Success, EventManager.Instance.progress[currentActor.relatedActor].tries);
 				eventUI.ShowNonePage();
 				eventUI.characterAnimator.SetBool("Happy", true);
 			}
@@ -45,7 +46,7 @@ namespace Event {
 					eventUI.ShowNonePage();
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Failure, EventManager.Instance.progress[currentActor].tries + 1);
 					eventUI.characterAnimator.SetTrigger("Angry");
-					//Handle actor fucking off
+					eventUI.inventory.actors.Remove(currentActor);
 				}
 				else {
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Pending, EventManager.Instance.progress[currentActor].tries + 1);

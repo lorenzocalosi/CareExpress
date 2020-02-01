@@ -40,10 +40,10 @@ public class PlayerMovement : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.GetComponent<EventHotSpot>())
+		EventHotSpot otherHotspot = other.GetComponent<EventHotSpot>();
+		if (otherHotspot != null)
 		{
-			//Debug.Log($"event invoked");
-			OnEnteredTriggerEvent?.Invoke();
+			otherHotspot.CallShowEvent();
 		}
 	}
 
