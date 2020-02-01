@@ -17,6 +17,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
 	private bool isInteracting;
 	private Rigidbody2D rb;
 
+	private EventHotSpot eventHotspot;
+
 	public event Action OnEnteredTriggerEvent;
 
 	private float localScaleX;
@@ -42,21 +44,24 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		if (canMove)
 		{
 			Move();
+			SetRotation();
 		}
-		SetRotation();
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
-	{
+	private void OnTriggerEnter2D(Collider2D other) {
 		EventHotSpot otherHotspot = other.GetComponent<EventHotSpot>();
 
 		// start interaction with event
-		if (otherHotspot.theEvent != null)
-		{
-			canMove = false;
-			rb.velocity = Vector2.zero;
-			SoundManager.Instance.InterruptSoundTrackAndPlayOther("Walking","Talking");
-			otherHotspot.CallShowEvent();
+		if (otherHotspot != null && otherHotspot.theEvent != null) {
+			eventHotspot = otherHotspot;
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision) {
+		EventHotSpot otherHotspot = collision.GetComponent<EventHotSpot>();
+		
+		if (otherHotspot != null && otherHotspot == eventHotspot) {
+			eventHotspot = null;
 		}
 	}
 
@@ -72,14 +77,17 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		animator.SetFloat("y", y);
 	}
 
-	private void GetInteract(InputActionEventData i)
-	{
+	private void GetInteract(InputActionEventData i) {
 		isInteracting = i.GetButtonDown();
 	}
 
-	private void Interact()
-	{
-		Debug.Log($"{isInteracting}");
+	private void Interact() {
+		if (eventHotspot != null && canMove) {
+			canMove = false;
+			rb.velocity = Vector2.zero;
+			SoundManager.Instance.InterruptSoundTrackAndPlayOther("Walking", "Talking");
+			eventHotspot.CallShowEvent();
+		}
 	}
 
 	private void Move()

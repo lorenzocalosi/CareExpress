@@ -17,15 +17,19 @@ public class CameraHandler : Singleton<CameraHandler> {
 	public Image fadeImage;
 	public AnimationCurve fadeCurve;
 	public float fadeTime;
+	public bool isAnimating;
 
 	private void Start() {
 		camera = GetComponent<Camera>();
 	}
 
 	public void ZoomTowards(Vector3 zoomTarget, Action onFadeFinish) {
-		StartCoroutine(Move(zoomTarget));
-		StartCoroutine(Zoom());
-		StartCoroutine(Fade(true, fadeTime, () => { onFadeFinish?.Invoke(); StartCoroutine(Fade(false, fadeTime/2)); }));
+		if (!isAnimating) {
+			isAnimating = true;
+			StartCoroutine(Move(zoomTarget));
+			StartCoroutine(Zoom());
+			StartCoroutine(Fade(true, fadeTime, () => { onFadeFinish?.Invoke(); StartCoroutine(Fade(false, fadeTime / 2, () => { isAnimating = false; })); }));
+		}
 	}
 
 	public void FadeOut(Action onFadeFinish) {

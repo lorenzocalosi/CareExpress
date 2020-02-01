@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class EventHotSpot : MonoBehaviour
-{
+public class EventHotSpot : MonoBehaviour {
 	#region Fields
 
 	// Static
@@ -22,8 +20,7 @@ public class EventHotSpot : MonoBehaviour
 
 	#region Methods
 
-	public void CallShowEvent()
-	{
+	public virtual void CallShowEvent() {
 		Debug.Log($"Event Recived");
 		if (theEvent != null) {
 			if (CameraHandler.Instance != null) {
