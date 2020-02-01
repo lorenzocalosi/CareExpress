@@ -40,7 +40,9 @@ public class EventHotSpot : MonoBehaviour
 	private void CallShowEvent()
 	{
 		Debug.Log($"Event Recived");
-		//Event.EventHandler.Instance.ShowEvent(theEvent);
+		if (theEvent != null) {
+			Event.EventHandler.Instance.ShowEvent(theEvent);
+		}
 	}
 
 	#endregion

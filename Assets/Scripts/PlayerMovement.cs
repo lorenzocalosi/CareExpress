@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 	private Player player;
 	private int playerID = 0;
 
+	private Animator animator;
+
 	private float x, y;
 	private bool isInteracting;
 	private Rigidbody2D rb;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start()
 	{
+		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D>();
 		player = ReInput.players.GetPlayer(playerID);
 		player.AddInputEventDelegate(GetX, UpdateLoopType.Update, InputActionEventType.AxisActiveOrJustInactive, RewiredConsts.Action.Horizontal_Movement);
@@ -47,11 +50,13 @@ public class PlayerMovement : MonoBehaviour
 	private void GetX(InputActionEventData i)
 	{
 		x = i.GetAxis();
+		animator.SetFloat("x", x);
 	}
 
 	void GetY(InputActionEventData i)
 	{
 		y = i.GetAxis();
+		animator.SetFloat("y", y);
 	}
 
 	private void GetInteract(InputActionEventData i)

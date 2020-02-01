@@ -9,10 +9,10 @@ namespace Event {
 		public List<Solution> GetRandomSolutions(Solution avoid) {
 			List<Solution> list = new List<Solution>();
 			List<Solution> filter = allSolutions.FindAll(x => x != avoid);
-			for (int i = 0; i < EventHandler.Instance.buttons.Count-1; i++) {
-				list.Add(filter[Random.Range(0, filter.Count)]);
-				filter = allSolutions.FindAll(x => x != avoid && !list.Contains(x));
-			}
+			//for (int i = 0; i < EventHandler.Instance.buttons.Count-1; i++) {
+			//	list.Add(filter[Random.Range(0, filter.Count)]);
+			//	filter = allSolutions.FindAll(x => x != avoid && !list.Contains(x));
+			//}
 			return list;
 		}
 	}

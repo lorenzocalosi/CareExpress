@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vecchiaccio
+  m_Controller: {fileID: 9100000, guid: 6c93b9b57571d8d4884993d408685d36, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 38697894dab5ff44488cdf490629915a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 155966557339a4548aa9fe5b2c011ae2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e5467251801829941b6acb0e877cd43d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a0342cae8f1bdc349a50f721f7a9c411, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b07ae15996048484e8858de5e01c3213, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5e81036d5af3b6145a2ff15c3a6aca4e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 64733d8611606bc4d8e0e655223b022d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d2956e403e05f294791fdc915052ab0c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 418be8ede7d3f0a40b6b7f0ab409f8e9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 968a11cb08cccd644a305b1828890aac, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 313506e01619d5c448d28a026520a55b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d7827b06b22040e4f901ac9848f6e0eb, type: 2}
