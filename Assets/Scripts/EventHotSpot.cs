@@ -7,6 +7,7 @@ public class EventHotSpot : MonoBehaviour {
 	// Static
 
 	// Public
+	public GameObject aButton;
 	public Event.Event theEvent;
 	// Hidden Public
 	private PlayerMovement playerMovement;

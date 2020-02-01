@@ -24,5 +24,5 @@ MonoBehaviour:
   animator: {fileID: 22100000, guid: 9f3ea4db13d447e4aa5d56f346110dc1, type: 2}
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
   relatedActor: {fileID: 11400000, guid: e44b9788a7d6c02498bc731772f0ec02, type: 2}
-  relatedSolution: {fileID: 11400000, guid: 29ea00336f629c74c97b80f666c752ba, type: 2}
+  relatedSolution: {fileID: 11400000, guid: a8fc5f310c5a3d9498fad942d9e5c77d, type: 2}
   icon: {fileID: 21300000, guid: d671c592a19eb374d8304cb41c041a12, type: 3}

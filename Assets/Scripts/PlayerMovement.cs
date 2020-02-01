@@ -40,11 +40,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
 	
 	private void FixedUpdate()
 	{
-		if (isInteracting)
-		{
-			Interact();
-		}
-
 		if (canMove)
 		{
 			Move();
@@ -58,6 +53,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		// start interaction with event
 		if (otherHotspot != null && otherHotspot.theEvent != null) {
 			eventHotspot = otherHotspot;
+			otherHotspot.aButton.SetActive(true);
 		}
 	}
 
@@ -65,6 +61,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		EventHotSpot otherHotspot = collision.GetComponent<EventHotSpot>();
 		
 		if (otherHotspot != null && otherHotspot == eventHotspot) {
+			otherHotspot.aButton.SetActive(false);
 			eventHotspot = null;
 		}
 	}
@@ -82,7 +79,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 	}
 
 	private void GetInteract(InputActionEventData i) {
-		isInteracting = i.GetButtonDown();
+		Interact();
 	}
 
 	private void GetCancel(InputActionEventData i)

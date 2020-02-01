@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0bcd3dedbb7bec42bd077c1dc6b7cf6, type: 3}
-  m_Name: SolutionC
+  m_Name: Money
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 039e23e0d79b7e34e965380b090a6ad8, type: 3}
+  sprite: {fileID: 21300000, guid: fbb5c78fc89dd804d8ebb29ac9cefd04, type: 3}
