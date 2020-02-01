@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class MapHotSpot : EventHotSpot {
@@ -6,6 +7,9 @@ public class MapHotSpot : EventHotSpot {
 
 	public List<GameObject> thisMap;
 	public List<GameObject> otherMap;
+	
+	[FoldoutGroup("Songs")]
+	public string songToDestination, songToStop, songToStartNext;
 
 	public Vector3 teleportPosition;
 
@@ -17,6 +21,8 @@ public class MapHotSpot : EventHotSpot {
 		Debug.Log($"Event Recived");
 		if (CameraHandler.Instance != null) {
 			CameraHandler.Instance.ZoomTowards(PlayerMovement.Instance.transform.position, ChangeMap);
+			SoundManager.Instance.StartMapThemeAfterTime(songToDestination, songToStop, songToStartNext);
+			Debug.LogWarning("REMEMBER TO CHANGE KEY STRING SONG");
 		}
 		else {
 			Event.EventHandler.Instance.ShowEvent(theEvent);
