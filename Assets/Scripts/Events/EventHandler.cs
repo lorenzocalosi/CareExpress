@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
@@ -7,7 +10,7 @@ namespace Event {
 		public Transform display;
 		public EventUI eventUI;
 		public Image background;
-
+		
 		public Event testEvent;
 
 		[ReadOnly]
@@ -16,10 +19,22 @@ namespace Event {
 		public Solution selectedItem;
 		[ReadOnly]
 		public Actor currentActor;
-
+		[ShowInInspector]
+		private int questCompleted;
+		private const int MaxQuest = 3;
+		[ShowInInspector] private List<Actor> goodEndingActors = new List<Actor>();
+		
 		private void Start() {
 			//Debug
 			//ShowEvent(testEvent);
+		}
+
+		private void Update()
+		{
+			if (questCompleted > MaxQuest)
+			{
+				//end game state
+			}
 		}
 
 		public void ShowEvent(Event newEvent) {
@@ -46,9 +61,15 @@ namespace Event {
 				EventManager.Instance.progress[currentActor.relatedActor] = new EventManager.ActorStateTries(EventManager.ActorState.Success, EventManager.Instance.progress[currentActor.relatedActor].tries);
 				eventUI.ShowNonePage();
 				eventUI.characterAnimator.SetBool("Happy", true);
+				//
+				goodEndingActors.Add(currentActor);
+				goodEndingActors.Add(currentActor.relatedActor);
+				//
 				eventUI.inventory.actors.Remove(currentActor);
 				eventUI.inventory.actors.Remove(currentActor.relatedActor);
 				eventUI.inventory.items.Remove(currentActor.relatedSolution);
+				//
+				questCompleted++;
 			}
 			else {
 				if (EventManager.Instance.progress[currentActor].tries + 1 >= EventManager.Instance.triesLimit) {
@@ -56,6 +77,8 @@ namespace Event {
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Failure, EventManager.Instance.progress[currentActor].tries + 1);
 					eventUI.characterAnimator.SetTrigger("Angry");
 					eventUI.inventory.actors.Remove(currentActor);
+					//
+					questCompleted++;
 				}
 				else {
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Pending, EventManager.Instance.progress[currentActor].tries + 1);

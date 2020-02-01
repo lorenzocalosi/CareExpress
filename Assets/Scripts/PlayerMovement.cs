@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerMovement : Singleton<PlayerMovement>
 {
 	public float speed = 5;
+	
 	[HideInInspector] public bool canMove = true;
 	private Player player;
 	private int playerID = 0;
@@ -18,7 +19,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
 	private Rigidbody2D rb;
 
 	private EventHotSpot eventHotspot;
-
+	private bool isPressingCancel;
+	public bool IsPressingCancel => isPressingCancel;
 	public event Action OnEnteredTriggerEvent;
 
 	private float localScaleX;
@@ -32,8 +34,10 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		player.AddInputEventDelegate(GetX, UpdateLoopType.Update, InputActionEventType.AxisActiveOrJustInactive, RewiredConsts.Action.Horizontal_Movement);
 		player.AddInputEventDelegate(GetY, UpdateLoopType.Update, InputActionEventType.AxisActiveOrJustInactive, RewiredConsts.Action.Vertical_Movement);
 		player.AddInputEventDelegate(GetInteract, UpdateLoopType.Update, InputActionEventType.ButtonPressed, RewiredConsts.Action.Interact);
+		player.AddInputEventDelegate(GetCancel, UpdateLoopType.Update, InputActionEventType.ButtonPressed, RewiredConsts.Action.UICancel);
 	}
 
+	
 	private void FixedUpdate()
 	{
 		if (isInteracting)
@@ -79,6 +83,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
 	private void GetInteract(InputActionEventData i) {
 		isInteracting = i.GetButtonDown();
+	}
+
+	private void GetCancel(InputActionEventData i)
+	{
+		isPressingCancel = i.GetButtonDown();
 	}
 
 	private void Interact() {

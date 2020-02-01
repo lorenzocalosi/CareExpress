@@ -40,7 +40,7 @@ namespace Event {
 
 		//Change to rewired, you know how to do it!!
 		private void Update() {
-			if (Input.GetKeyDown(KeyCode.Escape) && gameObject.activeSelf) {
+			if (PlayerMovement.Instance.IsPressingCancel && gameObject.activeSelf) {
 				Back();
 				SoundManager.Instance.InterruptSoundTrackAndPlayOther("Talking", "Walking");
 			}
