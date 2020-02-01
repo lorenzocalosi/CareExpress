@@ -32,6 +32,7 @@ namespace Event {
 		public void ExitEvent() {
 			eventUI.gameObject.SetActive(false);
 			eventUI.characterAnimator.SetTrigger("Reset");
+			PlayerMovement.Instance.canMove = true;
 		}
 
 		public void Evaluate() {

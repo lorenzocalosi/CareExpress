@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using Rewired;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
 	public float speed = 5;
+	[HideInInspector]public bool canMove = true;
 	private Player player;
 	private int playerID = 0;
 
@@ -33,16 +34,23 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Interact();
 		}
-		
-		Move();
+
+		if (canMove)
+		{
+			Move();
+		}
 		SetRotation();
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		EventHotSpot otherHotspot = other.GetComponent<EventHotSpot>();
-		if (otherHotspot != null)
+		
+		// start interaction with event
+		if (otherHotspot.theEvent != null)
 		{
+			canMove = false;
+			rb.velocity = Vector2.zero;
 			otherHotspot.CallShowEvent();
 		}
 	}
