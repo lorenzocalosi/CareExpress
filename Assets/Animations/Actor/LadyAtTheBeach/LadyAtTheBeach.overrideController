@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LadyAtTheBeach
+  m_Controller: {fileID: 9100000, guid: 6c93b9b57571d8d4884993d408685d36, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 38697894dab5ff44488cdf490629915a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6e3750a3732223b40a9290d9764eb9c9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e5467251801829941b6acb0e877cd43d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ba17364c3a71cbe469750a5c0b175a79, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b07ae15996048484e8858de5e01c3213, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 18b2f63f72d0e3a4791dd8c6c567d405, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 64733d8611606bc4d8e0e655223b022d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: de90f319658259e48bb6f665fd9e8ffc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 418be8ede7d3f0a40b6b7f0ab409f8e9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 753c9815cba049946ac9d9d7b8db5999, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 313506e01619d5c448d28a026520a55b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 40ffea86f57213a44809b37936171398, type: 2}

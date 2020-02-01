@@ -27,12 +27,17 @@ namespace Event {
 			background.sprite = newEvent.background;
 			eventUI.gameObject.SetActive(true);
 			eventUI.ShowEventUI(newEvent);
+			selectedActor = null;
+			selectedItem = null;
 		}
 
 		public void ExitEvent() {
-			eventUI.gameObject.SetActive(false);
-			eventUI.characterAnimator.SetTrigger("Reset");
-			PlayerMovement.Instance.canMove = true;
+			CameraHandler.Instance.FadeOut(() =>
+			{
+				eventUI.gameObject.SetActive(false);
+				eventUI.characterAnimator.SetTrigger("Reset");
+				PlayerMovement.Instance.canMove = true;
+			});
 		}
 
 		public void Evaluate() {
@@ -41,6 +46,9 @@ namespace Event {
 				EventManager.Instance.progress[currentActor.relatedActor] = new EventManager.ActorStateTries(EventManager.ActorState.Success, EventManager.Instance.progress[currentActor.relatedActor].tries);
 				eventUI.ShowNonePage();
 				eventUI.characterAnimator.SetBool("Happy", true);
+				eventUI.inventory.actors.Remove(currentActor);
+				eventUI.inventory.actors.Remove(currentActor.relatedActor);
+				eventUI.inventory.items.Remove(currentActor.relatedSolution);
 			}
 			else {
 				if (EventManager.Instance.progress[currentActor].tries + 1 >= EventManager.Instance.triesLimit) {

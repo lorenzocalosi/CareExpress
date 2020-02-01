@@ -64,12 +64,24 @@ namespace Event {
 					button.onClick.RemoveAllListeners();
 					button.onClick.AddListener(() => PickActor(actor));
 					//Change this to an image or whatever you want sweetie ://) <3 <3 <3
-					button.GetComponentInChildren<Text>().text = actor.name;
-					//button.GetComponentInChildren<Image>().sprite = actor.icon;
+					if (!string.IsNullOrEmpty(actor.name)) {
+						if (!string.IsNullOrEmpty(actor.name)) {
+							Text buttonText = button.GetComponentInChildren<Text>();
+							if (buttonText != null) {
+								buttonText.text = actor.name;
+							}
+						}
+					}
 					if (!isFirstButtonSelected){
-				
 						SelectButton(button.gameObject);
 						isFirstButtonSelected = true;
+					}
+					if (actor.icon != null) {
+						Image[] buttonImages = button.GetComponentsInChildren<Image>();
+						if (buttonImages != null && buttonImages.Length > 0) {
+							buttonImages[1].sprite = actor.icon;
+							buttonImages[1].color = Color.white;
+						}
 					}
 				}
 			}
@@ -91,13 +103,24 @@ namespace Event {
 				button.onClick.RemoveAllListeners();
 				button.onClick.AddListener(() => PickItem(item));
 				//Change this to an image or whatever you want sweetie ://) <3 <3 <3
-				button.GetComponentInChildren<Text>().text = item.name;
-				//button.GetComponentInChildren<Image>().sprite = item.sprite;
+				if (!string.IsNullOrEmpty(item.name)) {
+					Text buttonText = button.GetComponentInChildren<Text>();
+					if (buttonText != null) {
+						buttonText.text = item.name;
+					}
+				}
+				if (item.sprite != null) {
+					Image[] buttonImages = button.GetComponentsInChildren<Image>();
+					if (buttonImages != null && buttonImages.Length > 0) {
+						buttonImages[1].sprite = item.sprite;
+						buttonImages[1].color = Color.white;
+					}
+				}
 				if (!isFirstButtonSelected){
-				
 					SelectButton(button.gameObject);
 					isFirstButtonSelected = true;
 				}
+				
 			}
 		}
 
@@ -116,7 +139,7 @@ namespace Event {
 		public void ShowEventUI(Event newEvent) {
 			characterImage.color = newEvent.actor.spriteColor;
 			characterAnimator.runtimeAnimatorController = newEvent.actor.animator;
-			if (EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Pending) {
+			if (inventory.actors.Count > 1 && EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Pending) {
 				characterAnimator.GetComponent<Image>().enabled = true;
 				ShowMainPage();
 			}

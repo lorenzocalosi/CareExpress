@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -26,7 +26,12 @@ public class EventHotSpot : MonoBehaviour
 	{
 		Debug.Log($"Event Recived");
 		if (theEvent != null) {
-			Event.EventHandler.Instance.ShowEvent(theEvent);
+			if (CameraHandler.Instance != null) {
+				CameraHandler.Instance.ZoomTowards(PlayerMovement.Instance.transform.position, () => Event.EventHandler.Instance.ShowEvent(theEvent));
+			}
+			else {
+				Event.EventHandler.Instance.ShowEvent(theEvent);
+			}
 		}
 	}
 

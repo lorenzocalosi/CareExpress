@@ -21,8 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animator: {fileID: 22100000, guid: 1b386f63977552f4087d81ecc1e71e85, type: 2}
+  animator: {fileID: 22100000, guid: 1b614db0f6c332c4d9fdae9a4ec87c8f, type: 2}
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
   relatedActor: {fileID: 0}
   relatedSolution: {fileID: 0}
-  icon: {fileID: 21300000, guid: 37ebfc8f070792d4b82089e061285b43, type: 3}
+  icon: {fileID: 21300000, guid: 14a61ed36daff7b4898975c3da34e664, type: 3}
