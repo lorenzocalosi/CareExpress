@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Event {
@@ -44,10 +45,19 @@ namespace Event {
 			}
 		}
 
-		private void SpawnActorButtons() {
-			foreach (Transform transform in actorParent) {
-				transform.gameObject.SetActive(false);
+		private void SpawnActorButtons()
+		{
+			bool isFirstButtonSelected = false;
+			foreach (Transform t in actorParent) {
+				
+				if (!isFirstButtonSelected){
+				
+					SelectButton(t.gameObject);
+					isFirstButtonSelected = true;
+				}
+				t.gameObject.SetActive(false);
 			}
+			
 			foreach (Actor actor in inventory.actors) {
 				if (actor != EventHandler.Instance.currentActor) {
 					Button button = DrawFromPool(buttonPrefab, actorParent).GetComponent<Button>();
@@ -56,14 +66,26 @@ namespace Event {
 					//Change this to an image or whatever you want sweetie ://) <3 <3 <3
 					button.GetComponentInChildren<Text>().text = actor.name;
 					//button.GetComponentInChildren<Image>().sprite = actor.icon;
+					if (!isFirstButtonSelected){
+				
+						SelectButton(button.gameObject);
+						isFirstButtonSelected = true;
+					}
 				}
 			}
 		}
 
+		void SelectButton(GameObject selectableObject) {
+			// Set the currently selected GameObject
+			EventSystem.current.SetSelectedGameObject(selectableObject);
+		}
+		
 		private void SpawnItemButtons() {
 			foreach (Transform transform in itemsParent) {
 				transform.gameObject.SetActive(false);
 			}
+			
+			bool isFirstButtonSelected = false;
 			foreach (Solution item in inventory.items) {
 				Button button = DrawFromPool(buttonPrefab, itemsParent).GetComponent<Button>();
 				button.onClick.RemoveAllListeners();
@@ -71,6 +93,11 @@ namespace Event {
 				//Change this to an image or whatever you want sweetie ://) <3 <3 <3
 				button.GetComponentInChildren<Text>().text = item.name;
 				//button.GetComponentInChildren<Image>().sprite = item.sprite;
+				if (!isFirstButtonSelected){
+				
+					SelectButton(button.gameObject);
+					isFirstButtonSelected = true;
+				}
 			}
 		}
 
@@ -138,6 +165,7 @@ namespace Event {
 			animator.SetBool("Items", false);
 			animator.SetBool("Actor", false);
 			animator.SetBool("None", false);
+			SelectButton(actorButton.gameObject);
 		}
 
 		public void ShowNonePage() {
