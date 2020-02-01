@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerMovement : Singleton<PlayerMovement>
 {
 	public float speed = 5;
-	[HideInInspector]public bool canMove = true;
+	[HideInInspector] public bool canMove = true;
 	private Player player;
 	private int playerID = 0;
 
@@ -19,8 +19,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
 	public event Action OnEnteredTriggerEvent;
 
+	private float localScaleX;
+
 	void Start()
 	{
+		localScaleX = transform.localScale.x;
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D>();
 		player = ReInput.players.GetPlayer(playerID);
@@ -28,6 +31,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		player.AddInputEventDelegate(GetY, UpdateLoopType.Update, InputActionEventType.AxisActiveOrJustInactive, RewiredConsts.Action.Vertical_Movement);
 		player.AddInputEventDelegate(GetInteract, UpdateLoopType.Update, InputActionEventType.ButtonPressed, RewiredConsts.Action.Interact);
 	}
+
 	private void FixedUpdate()
 	{
 		if (isInteracting)
@@ -45,7 +49,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		EventHotSpot otherHotspot = other.GetComponent<EventHotSpot>();
-		
+
 		// start interaction with event
 		if (otherHotspot.theEvent != null)
 		{
@@ -69,13 +73,14 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
 	private void GetInteract(InputActionEventData i)
 	{
-		isInteracting = i.GetButtonDown(); 
+		isInteracting = i.GetButtonDown();
 	}
 
 	private void Interact()
 	{
 		Debug.Log($"{isInteracting}");
 	}
+
 	private void Move()
 	{
 		//if(x == 0 && y == 0) return;
@@ -92,6 +97,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 			float correctionAngleBasedOnSprite = -90; // valore da twiccare in base all'angolazione della sprite
 			float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.AngleAxis(angle + correctionAngleBasedOnSprite, Vector3.forward);
+
+			Vector3 localScaleToApply = transform.localScale;
+
+			localScaleToApply.x = (x >= 0) ? localScaleX : -localScaleX;
+
+			transform.localScale = new Vector3(localScaleToApply.x, transform.localScale.y, transform.localScale.z);
 		}
 	}
 }
