@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83dcccfce772e445a95cb7fd1f1a763, type: 3}
+  m_Name: ActorE
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  animator: {fileID: 22100000, guid: be1687befcbecbc40b26591f693e4d8c, type: 2}
+  spriteColor: {r: 1, g: 1, b: 1, a: 1}
+  relatedActor: {fileID: 0}
+  relatedSolution: {fileID: 0}
+  icon: {fileID: 21300000, guid: 55fb257f55881f44eb7764625c7f8d81, type: 3}
