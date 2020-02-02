@@ -17,6 +17,17 @@ namespace Event {
 		public Button actorButton;
 		public Button itemsButton;
 
+		public Sprite baseActor;
+		public Sprite baseItem;
+
+		public Sprite buttonDone;
+		public Sprite buttonSelected;
+
+		public Image actorButtonImage;
+		public Image itemButtonImage;
+
+		public Button okButton;
+
 		public Transform errorTransform;
 		[AssetsOnly]
 		public GameObject errorImage;
@@ -33,13 +44,12 @@ namespace Event {
 		public Transform itemsParent;
 		public Transform actorParent;
 
-		public Sprite buttonDone;
-
 		[AssetsOnly]
 		public GameObject buttonPrefab;
 
 		private void Awake() {
 			pageStack = new Stack<Page>();
+			okButton.onClick.AddListener(() => EventHandler.Instance.Evaluate());
 		}
 
 		//Change to rewired, you know how to do it!!
@@ -164,6 +174,8 @@ namespace Event {
 		public void ShowEventUI(Event newEvent) {
 			characterImage.color = newEvent.actor.spriteColor;
 			characterAnimator.runtimeAnimatorController = newEvent.actor.animator;
+			EventHandler.Instance.selectedActor = null;
+			EventHandler.Instance.selectedItem = null;
 			if (inventory.actors.Count > 1 && EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Pending) {
 				characterAnimator.GetComponent<Image>().enabled = true;
 				ShowMainPage();
@@ -219,24 +231,34 @@ namespace Event {
 			actorButton.onClick.RemoveListener(CallbackActor);
 			itemsButton.onClick.RemoveListener(CallbackItem);
 			if (!EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor) {
+				actorButtonImage.sprite = EventHandler.Instance.selectedActor == null ? baseActor : EventHandler.Instance.selectedActor.icon;
 				actorButton.onClick.AddListener(CallbackActor);
 				actorButton.transition = Selectable.Transition.Animation;
 				actorButton.animator.enabled = true;
 			}
 			else {
+				actorButtonImage.sprite = EventHandler.Instance.currentActor.relatedActor.icon;
 				actorButton.animator.enabled = false;
 				actorButton.transition = Selectable.Transition.None;
-				actorButton.GetComponent<Image>().sprite = buttonDone;
+				actorButton.GetComponent<Image>().sprite = buttonSelected;
 			}
 			if (!EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem) {
+				itemButtonImage.sprite = EventHandler.Instance.selectedItem == null ? baseItem : EventHandler.Instance.selectedItem.sprite;
 				itemsButton.onClick.AddListener(CallbackItem);
 				itemsButton.transition = Selectable.Transition.Animation;
 				itemsButton.animator.enabled = true;
 			}
 			else {
+				itemButtonImage.sprite = EventHandler.Instance.currentActor.relatedSolution.sprite;
 				itemsButton.animator.enabled = false;
 				itemsButton.transition = Selectable.Transition.None;
-				itemsButton.GetComponent<Image>().sprite = buttonDone;
+				itemsButton.GetComponent<Image>().sprite = buttonSelected;
+			}
+			if (EventHandler.Instance.selectedActor != null && EventHandler.Instance.selectedItem != null) {
+				okButton.gameObject.SetActive(true);
+			}
+			else {
+				okButton.gameObject.SetActive(false);
 			}
 			pageStack.Clear();
 			currentPage = Page.Main;
@@ -280,22 +302,12 @@ namespace Event {
 
 		private void PickActor(Actor actor) {
 			EventHandler.Instance.selectedActor = actor;
-			if (EventHandler.Instance.selectedItem != null) {
-				EventHandler.Instance.Evaluate();
-			}
-			else {
-				ShowItemsPage();
-			}
+			ShowMainPage();
 		}
 
 		private void PickItem(Solution item) {
 			EventHandler.Instance.selectedItem = item;
-			if (EventHandler.Instance.selectedActor != null) {
-				EventHandler.Instance.Evaluate();
-			}
-			else {
-				ShowActorPage();
-			}
+			ShowMainPage();
 		}
 	}
 }
