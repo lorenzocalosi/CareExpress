@@ -17,6 +17,10 @@ namespace Event {
 		public Button actorButton;
 		public Button itemsButton;
 
+		public Transform errorTransform;
+		[AssetsOnly]
+		public GameObject errorImage;
+
 		public Inventory inventory;
 
 		private Stack<Page> pageStack;
@@ -29,13 +33,13 @@ namespace Event {
 		public Transform itemsParent;
 		public Transform actorParent;
 
+		public Sprite buttonDone;
+
 		[AssetsOnly]
 		public GameObject buttonPrefab;
 
 		private void Awake() {
 			pageStack = new Stack<Page>();
-			actorButton.onClick.AddListener(() => actorButton.GetComponent<ButtonEventHandler>().lateExectution = () => ShowActorPage());
-			itemsButton.onClick.AddListener(() => itemsButton.GetComponent<ButtonEventHandler>().lateExectution = () => ShowItemsPage());
 		}
 
 		//Change to rewired, you know how to do it!!
@@ -125,16 +129,36 @@ namespace Event {
 			}
 		}
 
-		private GameObject DrawFromPool(GameObject prefab, Transform parent) {
-			GameObject buttonObject = null;
+		private void DrawFromIssuePool(GameObject prefab, Transform parent) {
 			foreach (Transform child in parent) {
-				if (!child.gameObject.activeSelf) {
-					buttonObject = child.gameObject;
-					buttonObject.SetActive(true);
+				if (!child.GetChild(0).gameObject.activeSelf) {
+					child.GetChild(0).gameObject.SetActive(true);
 					break;
 				}
 			}
-			return buttonObject ?? Instantiate(prefab, parent);
+		}
+
+		private GameObject DrawFromPool(GameObject prefab, Transform parent) {
+			GameObject newObject = null;
+			foreach (Transform child in parent) {
+				if (!child.gameObject.activeSelf) {
+					newObject = child.gameObject;
+					newObject.SetActive(true);
+					break;
+				}
+			}
+			return newObject ?? Instantiate(prefab, parent);
+		}
+
+		public void ShowErrors() {
+			Debug.Log("Error");
+			errorTransform.gameObject.SetActive(true);
+			foreach (Transform transform in errorTransform) {
+				transform.GetChild(0).gameObject.SetActive(false);
+			}
+			for (int i = 0; i < EventManager.Instance.progress[EventHandler.Instance.currentActor].tries; i++) {
+				DrawFromIssuePool(errorImage, errorTransform);
+			}
 		}
 
 		public void ShowEventUI(Event newEvent) {
@@ -143,6 +167,7 @@ namespace Event {
 			if (inventory.actors.Count > 1 && EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Pending) {
 				characterAnimator.GetComponent<Image>().enabled = true;
 				ShowMainPage();
+				ShowErrors();
 			}
 			else {
 				if (EventManager.Instance.progress[newEvent.actor].actorState == EventManager.ActorState.Failure) {
@@ -182,7 +207,37 @@ namespace Event {
 			animator.SetBool("None", false);
 		}
 
+		private void CallbackActor() {
+			actorButton.GetComponent<ButtonEventHandler>().lateExectution = () => ShowActorPage();
+		}
+		
+		private void CallbackItem() {
+			itemsButton.GetComponent<ButtonEventHandler>().lateExectution = () => ShowItemsPage();
+		}
+
 		public void ShowMainPage() {
+			actorButton.onClick.RemoveListener(CallbackActor);
+			itemsButton.onClick.RemoveListener(CallbackItem);
+			if (!EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor) {
+				actorButton.onClick.AddListener(CallbackActor);
+				actorButton.transition = Selectable.Transition.Animation;
+				actorButton.animator.enabled = true;
+			}
+			else {
+				actorButton.animator.enabled = false;
+				actorButton.transition = Selectable.Transition.None;
+				actorButton.GetComponent<Image>().sprite = buttonDone;
+			}
+			if (!EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem) {
+				itemsButton.onClick.AddListener(CallbackItem);
+				itemsButton.transition = Selectable.Transition.Animation;
+				itemsButton.animator.enabled = true;
+			}
+			else {
+				itemsButton.animator.enabled = false;
+				itemsButton.transition = Selectable.Transition.None;
+				itemsButton.GetComponent<Image>().sprite = buttonDone;
+			}
 			pageStack.Clear();
 			currentPage = Page.Main;
 			animator.SetBool("Main", true);
@@ -206,11 +261,11 @@ namespace Event {
 				Page page = pageStack.Pop();
 				switch (page) {
 					case Page.Actor:
-						EventHandler.Instance.selectedActor = null;
+						EventHandler.Instance.selectedActor = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor ? EventHandler.Instance.selectedActor : null;
 						ShowActorPage(false);
 						break;
 					case Page.Item:
-						EventHandler.Instance.selectedItem = null;
+						EventHandler.Instance.selectedItem = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem ? EventHandler.Instance.selectedItem : null;
 						ShowItemsPage(false);
 						break;
 					case Page.Main:

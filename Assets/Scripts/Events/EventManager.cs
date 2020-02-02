@@ -14,10 +14,14 @@ namespace Event {
 		public struct ActorStateTries {
 			public ActorState actorState;
 			public int tries;
+			public bool guessedActor;
+			public bool guessedItem;
 
-			public ActorStateTries(ActorState actorState, int tries) {
+			public ActorStateTries(ActorState actorState, int tries, bool guessedActor = false, bool guessedItem = false) {
 				this.actorState = actorState;
 				this.tries = tries;
+				this.guessedActor = guessedActor;
+				this.guessedItem = guessedItem;
 			}
 		}
 

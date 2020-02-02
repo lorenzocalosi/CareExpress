@@ -30,6 +30,7 @@ public class MapHotSpot : EventHotSpot {
 	}
 
 	private void ChangeMap() {
+		PlayerMovement.Instance.transform.position = teleportPosition;
 		foreach (GameObject gameObject in thisMap) {
 			gameObject.SetActive(false);
 		}
