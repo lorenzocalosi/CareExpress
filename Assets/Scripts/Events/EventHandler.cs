@@ -42,8 +42,8 @@ namespace Event {
 			background.sprite = newEvent.background;
 			eventUI.gameObject.SetActive(true);
 			eventUI.ShowEventUI(newEvent);
-			selectedActor = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor ? EventHandler.Instance.selectedActor : null; ;
-			selectedItem = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem ? EventHandler.Instance.selectedItem : null; ;
+			selectedActor = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor ? EventHandler.Instance.selectedActor : null;
+			selectedItem = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem ? EventHandler.Instance.selectedItem : null;
 		}
 
 		public void ExitEvent() {
@@ -89,6 +89,8 @@ namespace Event {
 				questCompleted++;
 			}
 			else {
+				selectedActor = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor ? EventHandler.Instance.selectedActor : null; ;
+				selectedItem = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem ? EventHandler.Instance.selectedItem : null; ;
 				if (EventManager.Instance.progress[currentActor].tries + 1 >= EventManager.Instance.triesLimit) {
 					eventUI.ShowNonePage();
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(
@@ -112,8 +114,6 @@ namespace Event {
 					SoundManager.Instance.PlayAudioClipOneShot("Confused");
 					eventUI.ShowMainPage();
 				}
-				selectedActor = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedActor ? EventHandler.Instance.selectedActor : null; ;
-				selectedItem = EventManager.Instance.progress[EventHandler.Instance.currentActor].guessedItem ? EventHandler.Instance.selectedItem : null; ;
 				eventUI.ShowErrors();
 			}
 		}
