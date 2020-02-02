@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c83dcccfce772e445a95cb7fd1f1a763, type: 3}
-  m_Name: ActorA
+  m_Name: SorellaFinestra
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,8 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animator: {fileID: 22100000, guid: 1b386f63977552f4087d81ecc1e71e85, type: 2}
+  animator: {fileID: 22100000, guid: 9f3ea4db13d447e4aa5d56f346110dc1, type: 2}
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
-  relatedActor: {fileID: 11400000, guid: c48ce12ce76ea664f8d8a746b642056c, type: 2}
-  relatedSolution: {fileID: 11400000, guid: 2bb7c5a063ea31845bc91150a28f2507, type: 2}
-  icon: {fileID: 21300000, guid: 37ebfc8f070792d4b82089e061285b43, type: 3}
+  relatedActor: {fileID: 11400000, guid: e44b9788a7d6c02498bc731772f0ec02, type: 2}
+  relatedSolution: {fileID: 11400000, guid: a8fc5f310c5a3d9498fad942d9e5c77d, type: 2}
+  icon: {fileID: 21300000, guid: d671c592a19eb374d8304cb41c041a12, type: 3}
