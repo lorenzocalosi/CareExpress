@@ -64,7 +64,7 @@ public class CameraHandler : Singleton<CameraHandler> {
 		endAction?.Invoke();
 	}
 
-	private IEnumerator Fade(bool fadeIn, float time, Action endAction = null) {
+	public IEnumerator Fade(bool fadeIn, float time, Action endAction = null) {
 		float count = 0;
 		float startAlpha = fadeIn ? 0 : 1;
 		float finishAlpha = fadeIn ? 1 : 0;

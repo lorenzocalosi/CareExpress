@@ -8,7 +8,6 @@ namespace Event {
 			Failure,
 			Success
 		}
-
 		public int triesLimit;
 
 		public struct ActorStateTries {
@@ -32,5 +31,15 @@ namespace Event {
 				progress[key] = new ActorStateTries(ActorState.Pending, 0);
 			}
 		}
+		
+		public EndingSettings endingSettings;
+		
+		public enum GameState
+		{
+			Gaming,Ending
+		}
 	}
+	
+	
+	
 }

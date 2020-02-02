@@ -13,6 +13,7 @@ namespace Event {
 		
 		public Event testEvent;
 
+		public event Action GameEnded;
 		[ReadOnly]
 		public Actor selectedActor;
 		[ReadOnly]
@@ -22,8 +23,9 @@ namespace Event {
 		[ShowInInspector]
 		private int questCompleted;
 		private const int MaxQuest = 3;
-		[ShowInInspector] private List<Actor> goodEndingActors = new List<Actor>();
-		
+		[ShowInInspector] private List<Actor> endingActors = new List<Actor>();
+
+		private bool gameEnded;
 		private void Start() {
 			//Debug
 			//ShowEvent(testEvent);
@@ -31,9 +33,20 @@ namespace Event {
 
 		private void Update()
 		{
-			if (questCompleted > MaxQuest)
+			if (Input.GetKeyDown(KeyCode.O))
 			{
+				StartCoroutine(EventManager.Instance.endingSettings.ShowImages(endingActors));
+			}
+			
+			if (questCompleted >= MaxQuest)
+			{
+				if (gameEnded) return;
 				//end game state
+				Debug.Log($"Game ending");
+				GameEnded?.Invoke();
+				EventManager.Instance.endingSettings.PlayEndingMusic();
+				StartCoroutine(EventManager.Instance.endingSettings.ShowImages(endingActors));
+				gameEnded = true;
 			}
 		}
 
@@ -79,8 +92,7 @@ namespace Event {
 				eventUI.characterAnimator.SetBool("Happy", true);
 				SoundManager.Instance.PlayAudioClipOneShot("Happy");
 				//
-				goodEndingActors.Add(currentActor);
-				goodEndingActors.Add(currentActor.relatedActor);
+				endingActors.Add(currentActor);
 				//
 				eventUI.inventory.actors.Remove(currentActor);
 				eventUI.inventory.actors.Remove(currentActor.relatedActor);

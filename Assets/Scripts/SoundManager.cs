@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Audio;
 using Object = System.Object;
@@ -17,13 +18,6 @@ public class SoundManager : Singleton<SoundManager>
 		soundTracks["Talking"].Play();
 	}
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-			soundTracks["Walking"].Stop();
-		}
-	}
 
 	public void PlayAudioClip(string key)
 	{
@@ -63,6 +57,17 @@ public class SoundManager : Singleton<SoundManager>
 		soundTracks[songOnAir].Play();
 		//yield return new WaitForSeconds(soundTracks[songOnAir].clip.length);
 		soundTracks[themeSongToStart].PlayDelayed(soundTracks[songOnAir].clip.length);
+	}
+	
+	public void PlaySoudtrack(string key)
+	{
+		soundTracks[key].Play();
+	}
+
+	public void StopAllSounds()
+	{
+		var audiosources = FindObjectsOfType<AudioSource>();
+		audiosources.ForEach(a => a.Stop());
 	}
 
 	public void PlayButtonHighlightedSound()
