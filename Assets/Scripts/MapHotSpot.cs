@@ -7,6 +7,8 @@ public class MapHotSpot : EventHotSpot {
 
 	public List<GameObject> thisMap;
 	public List<GameObject> otherMap;
+
+	public Animator animator;
 	
 	[FoldoutGroup("Songs")]
 	public string songToDestination, songToStop, songToStartNext;
@@ -19,25 +21,22 @@ public class MapHotSpot : EventHotSpot {
 
 	public override void CallShowEvent() {
 		Debug.Log($"Event Recived");
-		if (CameraHandler.Instance != null) {
-			CameraHandler.Instance.ZoomTowards(PlayerMovement.Instance.transform.position, ChangeMap);
-			SoundManager.Instance.StartMapThemeAfterTime(songToDestination, songToStop, songToStartNext);
-			Debug.LogWarning("REMEMBER TO CHANGE KEY STRING SONG");
-		}
-		else {
-			Event.EventHandler.Instance.ShowEvent(theEvent);
-		}
+		SoundManager.Instance.StartMapThemeAfterTime(songToDestination, songToStop, songToStartNext);
+		PlayerMovement.Instance.GetComponentInChildren<SpriteRenderer>().enabled = false;
+		animator.SetTrigger("PlaneToHawaii");
 	}
 
-	private void ChangeMap() {
-		PlayerMovement.Instance.transform.position = teleportPosition;
+	public void AnimationOver() {
+		Debug.Log("Arrived");
+	}
+
+	public void ChangeMap() {
 		foreach (GameObject gameObject in thisMap) {
 			gameObject.SetActive(false);
 		}
 		foreach (GameObject gameObject in otherMap) {
 			gameObject.SetActive(true);
 		}
-		PlayerMovement.Instance.canMove = true;
 	}
 
 	#endregion

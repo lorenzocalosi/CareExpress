@@ -49,7 +49,17 @@ public class SoundManager : Singleton<SoundManager>
 
 	public void StartMapThemeAfterTime(string songOnAir, string themeSongToStop, string themeSongToStart)
 	{
-		soundTracks[themeSongToStop].Stop();
+		if (themeSongToStop.Contains(",")) {
+			string[] songsToStop = themeSongToStop.Split(',');
+			for (int i = 0; i < songsToStop.Length; i++) {
+				if (soundTracks.ContainsKey(songsToStop[i])) {
+					soundTracks[songsToStop[i]].Stop();
+				}
+			}
+		}
+		else {
+			soundTracks[themeSongToStop].Stop();
+		}
 		soundTracks[songOnAir].Play();
 		//yield return new WaitForSeconds(soundTracks[songOnAir].clip.length);
 		soundTracks[themeSongToStart].PlayDelayed(soundTracks[songOnAir].clip.length);
