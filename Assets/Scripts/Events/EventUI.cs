@@ -34,8 +34,8 @@ namespace Event {
 
 		private void Awake() {
 			pageStack = new Stack<Page>();
-			actorButton.onClick.AddListener(() => ShowActorPage());
-			itemsButton.onClick.AddListener(() => ShowItemsPage());
+			actorButton.onClick.AddListener(() => actorButton.GetComponent<ButtonEventHandler>().lateExectution = () => ShowActorPage());
+			itemsButton.onClick.AddListener(() => itemsButton.GetComponent<ButtonEventHandler>().lateExectution = () => ShowItemsPage());
 		}
 
 		//Change to rewired, you know how to do it!!
@@ -63,7 +63,7 @@ namespace Event {
 				if (actor != EventHandler.Instance.currentActor) {
 					Button button = DrawFromPool(buttonPrefab, actorParent).GetComponent<Button>();
 					button.onClick.RemoveAllListeners();
-					button.onClick.AddListener(() => PickActor(actor));
+					button.onClick.AddListener(() => button.GetComponent<ButtonEventHandler>().lateExectution = () => PickActor(actor));
 					//Change this to an image or whatever you want sweetie ://) <3 <3 <3
 					if (!string.IsNullOrEmpty(actor.name)) {
 						if (!string.IsNullOrEmpty(actor.name)) {
@@ -102,7 +102,7 @@ namespace Event {
 			foreach (Solution item in inventory.items) {
 				Button button = DrawFromPool(buttonPrefab, itemsParent).GetComponent<Button>();
 				button.onClick.RemoveAllListeners();
-				button.onClick.AddListener(() => PickItem(item));
+				button.onClick.AddListener(() => button.GetComponent<ButtonEventHandler>().lateExectution = () => PickItem(item));
 				//Change this to an image or whatever you want sweetie ://) <3 <3 <3
 				if (!string.IsNullOrEmpty(item.name)) {
 					Text buttonText = button.GetComponentInChildren<Text>();
