@@ -10,21 +10,22 @@ public class SoundManager : Singleton<SoundManager>
 	public AudioMixerGroup mixer;
 	public Dictionary<string, Sound> audioClips;
 	public Dictionary<string, AudioSource> soundTracks;
-	
+
+	private void Start()
+	{
+		soundTracks["Walking"].Play();
+		soundTracks["Talking"].Play();
+	}
+
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.H))
+		if (Input.GetKeyDown(KeyCode.F))
 		{
-			PlayAudioClip("Test");
-		}
-
-		if (Input.GetKeyDown(KeyCode.O))
-		{
-			PlayAudioClipOneShot("Test");
+			soundTracks["Walking"].Stop();
 		}
 	}
 
-	private void PlayAudioClip(string key)
+	public void PlayAudioClip(string key)
 	{
 		var audioSource = gameObject.AddComponent<AudioSource>();
 
@@ -32,7 +33,7 @@ public class SoundManager : Singleton<SoundManager>
 		audioClips[key].Play(audioSource);
 	}
 
-	private void PlayAudioClipOneShot(string key)
+	public void PlayAudioClipOneShot(string key)
 	{
 		var audioSource = gameObject.AddComponent<AudioSource>();
 
@@ -52,6 +53,11 @@ public class SoundManager : Singleton<SoundManager>
 		soundTracks[songOnAir].Play();
 		//yield return new WaitForSeconds(soundTracks[songOnAir].clip.length);
 		soundTracks[themeSongToStart].PlayDelayed(soundTracks[songOnAir].clip.length);
+	}
+
+	public void PlayButtonHighlightedSound()
+	{
+		PlayAudioClipOneShot("ButtonHighlight");
 	}
 }
 

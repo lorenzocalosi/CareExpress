@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2086227881}
   - component: {fileID: 8269341365105626693}
   - component: {fileID: 1648737412947796372}
+  - component: {fileID: 680928259}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -51,11 +52,16 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 8300000, guid: 0af393d7f33bf084f9d264d2c0459e85, type: 3}
+    - {fileID: 8300000, guid: 1eb7b03600347e948bc8f8c0affa83c6, type: 3}
+    - {fileID: 8300000, guid: 6c9efd443dc30204e93b8f04661e887f, type: 3}
+    - {fileID: 8300000, guid: 77afab4ded25ee2449f6ccdaef3da5bd, type: 3}
+    - {fileID: 8300000, guid: e9b55283425c464488cfb2d474778ac2, type: 3}
+    - {fileID: 8300000, guid: 46ae715ce60ac634c9f6297d23aba94d, type: 3}
     - {fileID: 2086227880}
     - {fileID: 2086227881}
     - {fileID: 8269341365105626693}
     - {fileID: 1648737412947796372}
+    - {fileID: 680928259}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -74,19 +80,127 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 5
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Test
+      Data: ButtonHighlight
     - Name: $v
       Entry: 7
       Data: 2|Sound, Assembly-CSharp
     - Name: audioClip
       Entry: 10
       Data: 0
+    - Name: pitch
+      Entry: 4
+      Data: 1
+    - Name: volume
+      Entry: 4
+      Data: 1
+    - Name: mixer
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ButtonSelection
+    - Name: $v
+      Entry: 7
+      Data: 3|Sound, Assembly-CSharp
+    - Name: audioClip
+      Entry: 10
+      Data: 1
+    - Name: pitch
+      Entry: 4
+      Data: 4.5
+    - Name: volume
+      Entry: 4
+      Data: 1
+    - Name: mixer
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Angry
+    - Name: $v
+      Entry: 7
+      Data: 4|Sound, Assembly-CSharp
+    - Name: audioClip
+      Entry: 10
+      Data: 2
+    - Name: pitch
+      Entry: 4
+      Data: 1
+    - Name: volume
+      Entry: 4
+      Data: 1
+    - Name: mixer
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Happy
+    - Name: $v
+      Entry: 7
+      Data: 5|Sound, Assembly-CSharp
+    - Name: audioClip
+      Entry: 10
+      Data: 3
+    - Name: pitch
+      Entry: 4
+      Data: 1
+    - Name: volume
+      Entry: 4
+      Data: 1
+    - Name: mixer
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Confused
+    - Name: $v
+      Entry: 7
+      Data: 6|Sound, Assembly-CSharp
+    - Name: audioClip
+      Entry: 10
+      Data: 4
     - Name: pitch
       Entry: 4
       Data: 1
@@ -110,18 +224,18 @@ MonoBehaviour:
       Data: 
     - Name: soundTracks
       Entry: 7
-      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.AudioSource,
+      Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.AudioSource,
         UnityEngine.AudioModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 8|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: 
@@ -130,7 +244,7 @@ MonoBehaviour:
       Data: Talking
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -142,7 +256,7 @@ MonoBehaviour:
       Data: Walking
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -154,7 +268,7 @@ MonoBehaviour:
       Data: ToHawaii
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -166,7 +280,19 @@ MonoBehaviour:
       Data: BackHawaii
     - Name: $v
       Entry: 10
-      Data: 4
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: InHawaii
+    - Name: $v
+      Entry: 10
+      Data: 9
     - Name: 
       Entry: 8
       Data: 
@@ -188,7 +314,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f7f355ff940ef3640ad923d036e01041, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -284,7 +410,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cfeb24a4c4a5aa1478dde18f5524336d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -475,11 +601,107 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 82840d91d78230b4e8b48c99eb4257b6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 32083f8952e0ab34c94873720ac83d2e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &680928259
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110688106314224088}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 82840d91d78230b4e8b48c99eb4257b6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

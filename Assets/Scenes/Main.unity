@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 111750138}
   - component: {fileID: 111750137}
   - component: {fileID: 111750136}
+  - component: {fileID: 111750139}
   m_Layer: 5
   m_Name: Items
   m_TagString: Untagged
@@ -381,6 +382,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111750134}
   m_CullTransparentMesh: 0
+--- !u!114 &111750139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111750134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e643acdce68aaa4dae03e36d7a60b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &118935371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6902810304435574864, guid: d4edd92d7eee83c48ad1c215528a095c,
@@ -651,6 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 204379766}
+  - component: {fileID: 204379767}
   m_Layer: 5
   m_Name: Items
   m_TagString: Untagged
@@ -678,6 +692,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &204379767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204379765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e643acdce68aaa4dae03e36d7a60b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &270114091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1192,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &379736436
 GameObject:
@@ -2169,6 +2195,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657803431}
   m_CullTransparentMesh: 0
+--- !u!82 &680928259 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 680928259, guid: 27a2db74db9581044810045feba27ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446716265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &739585772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,7 +2286,7 @@ PrefabInstance:
     - target: {fileID: 86353038091813550, guid: 4056dfad2daaa8a47bd62ca9c4ef428d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 86353038091813550, guid: 4056dfad2daaa8a47bd62ca9c4ef428d,
         type: 3}
@@ -3118,6 +3150,9 @@ MonoBehaviour:
   - {fileID: 1473590300}
   otherMap:
   - {fileID: 172431308}
+  songToDestination: BackHawaii
+  songToStop: InHawaii
+  songToStartNext: Walking
   teleportPosition: {x: 2.8, y: 2, z: 0}
 --- !u!1 &893460036
 GameObject:
@@ -3439,7 +3474,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974183847
 GameObject:
@@ -3662,7 +3697,7 @@ PrefabInstance:
     - target: {fileID: 6069468535816807112, guid: 76ffcf9b92867f74c98ba076ab17273d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6069468535816807112, guid: 76ffcf9b92867f74c98ba076ab17273d,
         type: 3}
@@ -4376,7 +4411,7 @@ PrefabInstance:
     - target: {fileID: 5110688106314224090, guid: 27a2db74db9581044810045feba27ece,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5110688106314224090, guid: 27a2db74db9581044810045feba27ece,
         type: 3}
@@ -4395,12 +4430,260 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
         type: 3}
+      propertyPath: serializationData.ReferencedUnityObjects.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
         type: 3}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 77afab4ded25ee2449f6ccdaef3da5bd, type: 3}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1eb7b03600347e948bc8f8c0affa83c6, type: 3}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c9efd443dc30204e93b8f04661e887f, type: 3}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 46ae715ce60ac634c9f6297d23aba94d, type: 3}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: e9b55283425c464488cfb2d474778ac2, type: 3}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 1446716266}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 680928259}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 1446716269}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 1446716267}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[9]
+      value: 
+      objectReference: {fileID: 1446716268}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"audioClips","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":16,"$rcontent":[{"$id":1,"$type":"System.String,
+        mscorlib","ButtonHighlight"},{"$id":2,"$type":"System.String, mscorlib","ButtonSelection"},$iref:1,$iref:2,$iref:1,$iref:2,{"$id":3,"$type":"System.String,
+        mscorlib","Happy"},$iref:1,$iref:2,$iref:3,{"$id":4,"$type":"System.String,
+        mscorlib","Confused"},$iref:1,$iref:2,$iref:3,$iref:4,{"$id":5,"$type":"System.String,
+        mscorlib","Angry"}]},"remove_keys":{"$id":6,"$type":"System.Object[], mscorlib","$rlength":5,"$rcontent":[{"$id":7,"$type":"System.String,
+        mscorlib","Test"},{"$id":8,"$type":"System.String, mscorlib","Test"},{"$id":9,"$type":"System.String,
+        mscorlib","Test"},{"$id":10,"$type":"System.String, mscorlib","Test"},{"$id":11,"$type":"System.String,
+        mscorlib","Test"}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"audioClips.{\"Angry\"}","value":{"$id":0,"$type":"Sound, Assembly-CSharp","audioClip":$eref:0,"pitch":1,"volume":1,"mixer":null}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"audioClips.{\"ButtonHighlight\"}","value":{"$id":0,"$type":"Sound,
+        Assembly-CSharp","audioClip":$eref:1,"pitch":1,"volume":1,"mixer":null}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      value: '"path":"audioClips.{\"ButtonHighlight\"}.audioClip","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"audioClips.{\"ButtonHighlight\"}.mixer","value":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
+      value: '"path":"audioClips.{\"ButtonHighlight\"}.pitch","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[6]
+      value: '"path":"audioClips.{\"ButtonHighlight\"}.volume","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[7]
+      value: '"path":"audioClips.{\"ButtonSelection\"}","value":{"$id":0,"$type":"Sound,
+        Assembly-CSharp","audioClip":$eref:2,"pitch":4.5,"volume":1,"mixer":null}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[8]
+      value: '"path":"audioClips.{\"ButtonSelection\"}.audioClip","value":$eref:2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[9]
+      value: '"path":"audioClips.{\"ButtonSelection\"}.mixer","value":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[10]
+      value: '"path":"audioClips.{\"ButtonSelection\"}.pitch","value":{"$id":0,"$type":"System.Single,
+        mscorlib",4.5}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[11]
+      value: '"path":"audioClips.{\"ButtonSelection\"}.volume","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[12]
+      value: '"path":"audioClips.{\"Confused\"}","value":{"$id":0,"$type":"Sound,
+        Assembly-CSharp","audioClip":$eref:3,"pitch":1,"volume":1,"mixer":null}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[13]
+      value: '"path":"audioClips.{\"Confused\"}.audioClip","value":$eref:3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[14]
+      value: '"path":"audioClips.{\"Confused\"}.mixer","value":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[15]
+      value: '"path":"audioClips.{\"Confused\"}.pitch","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[16]
+      value: '"path":"audioClips.{\"Confused\"}.volume","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[17]
+      value: '"path":"audioClips.{\"Happy\"}","value":{"$id":0,"$type":"Sound, Assembly-CSharp","audioClip":$eref:4,"pitch":1,"volume":1,"mixer":null}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[18]
+      value: '"path":"audioClips.{\"Happy\"}.audioClip","value":$eref:4'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[19]
+      value: '"path":"audioClips.{\"Happy\"}.mixer","value":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[20]
+      value: '"path":"audioClips.{\"Happy\"}.pitch","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[21]
+      value: '"path":"audioClips.{\"Happy\"}.volume","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[22]
+      value: '"path":"soundTracks","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":2,"$rcontent":[{"$id":1,"$type":"System.String,
+        mscorlib","InHawaii"},$iref:1]},"remove_keys":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[23]
+      value: '"path":"soundTracks.{\"BackHawaii\"}","value":$eref:5'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[24]
+      value: '"path":"soundTracks.{\"InHawaii\"}","value":$eref:6'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[25]
+      value: '"path":"soundTracks.{\"Talking\"}","value":$eref:7'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[26]
+      value: '"path":"soundTracks.{\"ToHawaii\"}","value":$eref:8'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110688106314224091, guid: 27a2db74db9581044810045feba27ece,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[27]
+      value: '"path":"soundTracks.{\"Walking\"}","value":$eref:9'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a2db74db9581044810045feba27ece, type: 3}
+--- !u!82 &1446716266 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1648737412947796372, guid: 27a2db74db9581044810045feba27ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446716265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1446716267 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8269341365105626693, guid: 27a2db74db9581044810045feba27ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446716265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1446716268 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2086227881, guid: 27a2db74db9581044810045feba27ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446716265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1446716269 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2086227880, guid: 27a2db74db9581044810045feba27ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446716265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472792062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,7 +4765,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473590300
 GameObject:
@@ -4995,6 +5278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1595849489}
+  - component: {fileID: 1595849490}
   m_Layer: 5
   m_Name: Actor
   m_TagString: Untagged
@@ -5022,6 +5306,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1595849490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595849488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e643acdce68aaa4dae03e36d7a60b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1603051093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5318,7 +5614,7 @@ RectTransform:
   - {fileID: 1096571163}
   - {fileID: 657803432}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5467,7 +5763,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1794063305
 MonoBehaviour:
@@ -5784,6 +6080,9 @@ MonoBehaviour:
   - {fileID: 172431308}
   otherMap:
   - {fileID: 1473590300}
+  songToDestination: ToHawaii
+  songToStop: Walking
+  songToStartNext: InHawaii
   teleportPosition: {x: 1.2, y: -4, z: 0}
 --- !u!1 &1878234559
 GameObject:
@@ -6219,6 +6518,7 @@ GameObject:
   - component: {fileID: 2029465401}
   - component: {fileID: 2029465400}
   - component: {fileID: 2029465399}
+  - component: {fileID: 2029465402}
   m_Layer: 5
   m_Name: Actors
   m_TagString: Untagged
@@ -6326,6 +6626,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029465397}
   m_CullTransparentMesh: 0
+--- !u!114 &2029465402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029465397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e643acdce68aaa4dae03e36d7a60b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2051464406
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,6 +61,7 @@ namespace Event {
 				EventManager.Instance.progress[currentActor.relatedActor] = new EventManager.ActorStateTries(EventManager.ActorState.Success, EventManager.Instance.progress[currentActor.relatedActor].tries);
 				eventUI.ShowNonePage();
 				eventUI.characterAnimator.SetBool("Happy", true);
+				SoundManager.Instance.PlayAudioClipOneShot("Happy");
 				//
 				goodEndingActors.Add(currentActor);
 				goodEndingActors.Add(currentActor.relatedActor);
@@ -76,6 +77,7 @@ namespace Event {
 					eventUI.ShowNonePage();
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Failure, EventManager.Instance.progress[currentActor].tries + 1);
 					eventUI.characterAnimator.SetTrigger("Angry");
+					SoundManager.Instance.PlayAudioClipOneShot("Angry");
 					eventUI.inventory.actors.Remove(currentActor);
 					//
 					questCompleted++;
@@ -83,6 +85,7 @@ namespace Event {
 				else {
 					EventManager.Instance.progress[currentActor] = new EventManager.ActorStateTries(EventManager.ActorState.Pending, EventManager.Instance.progress[currentActor].tries + 1);
 					eventUI.characterAnimator.SetTrigger("Confused");
+					SoundManager.Instance.PlayAudioClipOneShot("Confused");
 					eventUI.ShowMainPage();
 				}
 				selectedActor = null;

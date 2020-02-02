@@ -24,7 +24,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 	public event Action OnEnteredTriggerEvent;
 
 	private float localScaleX;
-
+	
 	void Start()
 	{
 		localScaleX = transform.localScale.x;
@@ -91,7 +91,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
 		if (eventHotspot != null && canMove) {
 			canMove = false;
 			rb.velocity = Vector2.zero;
-			SoundManager.Instance.InterruptSoundTrackAndPlayOther("Walking", "Talking");
+			
+			//if its not a hotspot can swap the songs else sound manager manages it!
+			if (!(eventHotspot is MapHotSpot))
+			{
+				SoundManager.Instance.InterruptSoundTrackAndPlayOther("Walking", "Talking");
+			}
 			eventHotspot.CallShowEvent();
 		}
 	}
