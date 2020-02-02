@@ -56,7 +56,9 @@ namespace Event {
 		private void Update() {
 			if (PlayerMovement.Instance.IsPressingCancel && gameObject.activeSelf) {
 				Back();
-				SoundManager.Instance.InterruptSoundTrackAndPlayOther("Talking", "Walking");
+				if (MapChanger.Instance.currentMap == 1) {
+					SoundManager.Instance.InterruptSoundTrackAndPlayOther("Talking", "Walking");
+				}
 			}
 		}
 

@@ -93,7 +93,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 			rb.velocity = Vector2.zero;
 			
 			//if its not a hotspot can swap the songs else sound manager manages it!
-			if (!(eventHotspot is MapHotSpot))
+			if (!(eventHotspot is MapHotSpot) && MapChanger.Instance.currentMap == 1)
 			{
 				SoundManager.Instance.InterruptSoundTrackAndPlayOther("Walking", "Talking");
 			}

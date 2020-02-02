@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapChanger : Singleton<MapChanger>
 {
-	private int currentMap = 1;
+	public int currentMap = 1;
 
 	public MapHotSpot map1Hotspot;
 	public Animator map1Plane;
