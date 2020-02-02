@@ -172,6 +172,9 @@ namespace Event {
 		}
 
 		public void ShowEventUI(Event newEvent) {
+			if (!inventory.actors.Contains(newEvent.actor)) {
+				inventory.actors.Add(newEvent.actor);
+			}
 			characterImage.color = newEvent.actor.spriteColor;
 			characterAnimator.runtimeAnimatorController = newEvent.actor.animator;
 			EventHandler.Instance.selectedActor = null;

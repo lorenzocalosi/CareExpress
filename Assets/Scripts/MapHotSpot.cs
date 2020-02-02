@@ -20,6 +20,7 @@ public class MapHotSpot : EventHotSpot {
 	#region Methods
 
 	public override void CallShowEvent() {
+		MapChanger.Instance.animator.enabled = true;
 		Debug.Log($"Event Recived");
 		SoundManager.Instance.StartMapThemeAfterTime(songToDestination, songToStop, songToStartNext);
 		PlayerMovement.Instance.GetComponentInChildren<SpriteRenderer>().enabled = false;

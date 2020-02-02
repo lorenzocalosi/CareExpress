@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraHandler : Singleton<CameraHandler> {
+public class CameraBehavior : MonoBehaviour {
+
 	private Camera camera;
 	private Vector3 startPosition;
 	//Move Settings
@@ -25,15 +26,13 @@ public class CameraHandler : Singleton<CameraHandler> {
 
 	public void ZoomTowards(Vector3 zoomTarget, Action onFadeFinish) {
 		if (!isAnimating) {
-			isAnimating = true;
-			StartCoroutine(Move(zoomTarget));
-			StartCoroutine(Zoom());
+			isAnimating = true;		
 			StartCoroutine(Fade(true, fadeTime, () => { onFadeFinish?.Invoke(); StartCoroutine(Fade(false, fadeTime / 2, () => { isAnimating = false; })); }));
 		}
 	}
 
 	public void FadeOut(Action onFadeFinish) {
-		StartCoroutine(Fade(true, fadeTime/2, () => { onFadeFinish?.Invoke(); StartCoroutine(Fade(false, fadeTime / 2)); }));
+		StartCoroutine(Fade(true, fadeTime / 2, () => { onFadeFinish?.Invoke(); StartCoroutine(Fade(false, fadeTime / 2)); }));
 	}
 
 	private IEnumerator Move(Vector3 moveTarget, Action endAction = null) {
