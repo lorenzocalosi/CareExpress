@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c83dcccfce772e445a95cb7fd1f1a763, type: 3}
-  m_Name: ActorD
+  m_Name: LuckyHawaiian
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,8 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  animator: {fileID: 22100000, guid: 8b6de6e69c98a1a4095cf30c9f646bfe, type: 2}
+  animator: {fileID: 22100000, guid: be1687befcbecbc40b26591f693e4d8c, type: 2}
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
-  relatedActor: {fileID: 0}
+  relatedActor: {fileID: 11400000, guid: 1a024a8e35a85544e95bf6b1d294f25b, type: 2}
   relatedSolution: {fileID: 0}
-  icon: {fileID: 21300000, guid: 9a931b021a6175d49a6ac9bd059f86dd, type: 3}
+  icon: {fileID: 21300000, guid: 55fb257f55881f44eb7764625c7f8d81, type: 3}

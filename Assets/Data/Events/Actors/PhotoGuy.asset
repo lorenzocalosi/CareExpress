@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c83dcccfce772e445a95cb7fd1f1a763, type: 3}
-  m_Name: ActorB
+  m_Name: PhotoGuy
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,6 +23,6 @@ MonoBehaviour:
     SerializationNodes: []
   animator: {fileID: 22100000, guid: 1b614db0f6c332c4d9fdae9a4ec87c8f, type: 2}
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
-  relatedActor: {fileID: 0}
+  relatedActor: {fileID: 11400000, guid: 2d6e5fd684a3a3f4495aadd47f8b979c, type: 2}
   relatedSolution: {fileID: 0}
   icon: {fileID: 21300000, guid: 14a61ed36daff7b4898975c3da34e664, type: 3}
