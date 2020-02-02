@@ -15,6 +15,12 @@ public class EndingScreen : SerializedMonoBehaviour
 					image.color = Color.white;
 				}
 			}
+			else
+			{
+				foreach (Image image in images[actors[i]]) {
+					image.color = Color.black;
+				}
+			}
 		}
 	}
 }

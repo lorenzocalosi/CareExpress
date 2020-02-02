@@ -9,11 +9,8 @@ using UnityEngine.UI;
 public class EndingSettings : SerializedScriptableObject
 {
 	public Dictionary<Actor, Sprite> endingSprites;
-	public Image image;
-	public Image blackImage;
 	public float fadeTime;
 	public float imageTime;
-
 	public AnimationCurve fadeCurve;
 	public void PlayEndingMusic()
 	{
@@ -22,23 +19,27 @@ public class EndingSettings : SerializedScriptableObject
 	}
 
 	
-	public IEnumerator ShowImages(List<Actor> keys)
+	public IEnumerator ShowImages(List<Actor> keys,Image imageToChange, GameObject finalSprite)
 	{
 		if (endingSprites != null) {
 			yield return CameraHandler.Instance.StartCoroutine(CameraHandler.Instance.Fade(true, fadeTime));
 		
-			image.gameObject.SetActive(true);
+			imageToChange.gameObject.SetActive(true);
 		
 			for (int i = 0; i < keys.Count; i++)
 			{
 				Sprite endingSprite = endingSprites[keys[i]];
-				image.sprite = endingSprite;
+				imageToChange.sprite = endingSprite;
 				yield return CameraHandler.Instance.StartCoroutine(CameraHandler.Instance.Fade(false, fadeTime));
 				yield return new WaitForSeconds(imageTime);
 				yield return CameraHandler.Instance.StartCoroutine(CameraHandler.Instance.Fade(true, fadeTime));
+				
 			}
+			imageToChange.gameObject.SetActive(false);
 		}
 		
-		Application.Quit();
+		finalSprite.SetActive(true);
+		finalSprite.GetComponent<EndingScreen>().ShowActorImages(keys);
+		yield return CameraHandler.Instance.StartCoroutine(CameraHandler.Instance.Fade(false, fadeTime));
 	}
 }

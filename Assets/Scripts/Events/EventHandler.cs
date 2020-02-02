@@ -8,9 +8,10 @@ using Sirenix.OdinInspector;
 namespace Event {
 	public class EventHandler : Singleton<EventHandler> {
 		public Transform display;
+		public Image imageToChangeSprites;
 		public EventUI eventUI;
 		public Image background;
-		
+		public GameObject finalSprite;
 		public Event testEvent;
 
 		public event Action GameEnded;
@@ -33,11 +34,6 @@ namespace Event {
 
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.O))
-			{
-				StartCoroutine(EventManager.Instance.endingSettings.ShowImages(endingActors));
-			}
-			
 			if (questCompleted >= MaxQuest)
 			{
 				if (gameEnded) return;
@@ -45,7 +41,7 @@ namespace Event {
 				Debug.Log($"Game ending");
 				GameEnded?.Invoke();
 				EventManager.Instance.endingSettings.PlayEndingMusic();
-				StartCoroutine(EventManager.Instance.endingSettings.ShowImages(endingActors));
+				StartCoroutine(EventManager.Instance.endingSettings.ShowImages(endingActors,imageToChangeSprites,finalSprite));
 				gameEnded = true;
 			}
 		}
